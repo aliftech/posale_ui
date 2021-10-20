@@ -5,7 +5,7 @@
         outlined
         shaped
         app
-        color="primary"
+        color="teal"
         dark
     >
     
@@ -14,7 +14,7 @@
         >
 
             <v-card-title>
-                Customers
+                Products
             </v-card-title>
 
             <v-card-text class="justify-center">
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-    name: 'Customers',
+    name: 'Products',
     data() {
         return {
             count: null
@@ -40,7 +40,7 @@ export default {
     },
     methods: {
         countAll() {
-            this.$axios.get('customer_count')
+            this.$axios.get('product_count')
                 .then((res) => {
                     this.count = res.data.count
                 })

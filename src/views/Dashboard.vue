@@ -2,10 +2,16 @@
   
     <v-app>
 
-        <drawer></drawer>
+        <v-container class="justify-center mt-12">
+            <panels></panels>
+        </v-container>
+
+        <v-container class="justify-center mt-3">
+            <panels2></panels2>
+        </v-container>
+
         <navbar></navbar>
-        
-        <panels></panels>
+    
 
     </v-app>
 
@@ -13,20 +19,23 @@
 
 <script>
 
-import Drawer from '../components/nav/drawer.vue'
 import Navbar from '../components/nav/navbar.vue'
 import Panels from '../components/dashboard/panels.vue'
+import Panels2 from '../components/dashboard/panels2.vue'
 
 export default {
     name: 'Dashboard',
     components: {
-        Drawer,
         Navbar,
-        Panels
+        Panels,
+        Panels2
     }
 }
 </script>
 
-<style>
-
+<style scoped>
+    .margin {
+        margin-left: auto;
+        margin-right: auto;
+    }
 </style>

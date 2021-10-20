@@ -1,7 +1,7 @@
 <template>
 
     <v-container
-        class="justify-center mt-16"
+        class="justify-center"
         app
     >
 
@@ -28,6 +28,27 @@
 
             </v-col>
 
+
+            <v-col
+                cols="12"
+                sm="3"
+            >
+
+                <products></products>
+
+            </v-col>
+
+
+            
+            <v-col
+                cols="12"
+                sm="3"
+            >
+
+                <brands></brands>
+
+            </v-col>
+
         </v-row>
 
     </v-container>
@@ -38,12 +59,16 @@
 
 import Customers from './customers.vue'
 import Suplyers from './suplyers.vue'
+import Products from './products.vue'
+import Brands from './brands.vue'
 
 export default {
     name: 'Panels',
     components: {
         Customers,
-        Suplyers
+        Suplyers,
+        Products,
+        Brands
     }
 }
 </script>

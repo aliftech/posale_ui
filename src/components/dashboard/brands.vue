@@ -5,7 +5,7 @@
         outlined
         shaped
         app
-        color="primary"
+        color="orange"
         dark
     >
     
@@ -14,7 +14,7 @@
         >
 
             <v-card-title>
-                Customers
+                Brands
             </v-card-title>
 
             <v-card-text class="justify-center">
@@ -29,10 +29,10 @@
 
 <script>
 export default {
-    name: 'Customers',
+    name: 'Brands',
     data() {
         return {
-            count: null
+            count: 0
         }
     },
     mounted() {
@@ -40,7 +40,7 @@ export default {
     },
     methods: {
         countAll() {
-            this.$axios.get('customer_count')
+            this.$axios.get('brand_count')
                 .then((res) => {
                     this.count = res.data.count
                 })
