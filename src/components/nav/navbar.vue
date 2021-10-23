@@ -72,7 +72,7 @@
         >
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-            <v-toolbar-title>POSALE</v-toolbar-title>
+            <v-toolbar-title>PIMPRO</v-toolbar-title>
 
             <v-spacer></v-spacer>
 

@@ -1,12 +1,16 @@
 <template>
   
-    <v-app>
+    <v-app
+        app
+    >
+
 
         <v-container class="justify-center mt-12">
-            <brand-list></brand-list>
+            <product-list></product-list>
         </v-container>
 
         <navbar></navbar>
+
 
     </v-app>
 
@@ -15,14 +19,14 @@
 <script>
 
 import Navbar from '../components/nav/navbar.vue'
-import brandList from '../components/brand/brand-list.vue'
+import productList from '../components/product/product-list.vue'
 
 export default {
-    name: 'Brand',
+    name: 'Product',
     components: {
         Navbar,
-        brandList
-    }
+        productList
+    },
 }
 </script>
 

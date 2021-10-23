@@ -45,7 +45,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn
-            color="blue darken-1"
+            color="red darken-1"
             text
             @click="dialog = false"
           >
@@ -54,7 +54,7 @@
           <v-btn
             color="blue darken-1"
             text
-            @click="add"
+            @click="$emit('add', params)"
           >
             Save
           </v-btn>
@@ -68,13 +68,7 @@
 <script>
 export default {
     name: 'Add',
-    data() {
-        return{
-            dialog: false,
-            code: '',
-            brand: '',
-        }
-    },
+    props: ['dialog', 'code', 'brand', 'msg'],
     computed: {
         params() {
             return {
@@ -83,7 +77,6 @@ export default {
             }
         }
     },
-
 }
 </script>
 

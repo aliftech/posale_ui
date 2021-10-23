@@ -1,9 +1,11 @@
 <template>
   
-    <v-app>
+    <v-app
+        app
+    >
 
         <v-container class="justify-center mt-12">
-            <brand-list></brand-list>
+            <type-list></type-list>
         </v-container>
 
         <navbar></navbar>
@@ -15,13 +17,13 @@
 <script>
 
 import Navbar from '../components/nav/navbar.vue'
-import brandList from '../components/brand/brand-list.vue'
+import typeList from '../components/type/type-list.vue'
 
 export default {
-    name: 'Brand',
+    name: 'Type',
     components: {
         Navbar,
-        brandList
+        typeList
     }
 }
 </script>
