@@ -6,6 +6,8 @@ import Brand from '../views/Brand.vue'
 import Type from '../views/Type.vue'
 import Category from '../views/Category.vue'
 import Product from '../views/Product.vue'
+import Inventory from '../views/Inventory.vue'
+import Suplyer from '../views/Suplyer.vue'
 
 Vue.use(VueRouter)
 
@@ -39,6 +41,16 @@ const routes = [
     path: '/product',
     name: 'Product',
     component: Product
+  },
+  {
+    path: '/inventory',
+    name: 'Inventory',
+    component: Inventory
+  },
+  {
+    path: '/suplyer_list',
+    name: 'Suplyer',
+    component: Suplyer
   },
 ]
 

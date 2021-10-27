@@ -33,7 +33,9 @@
                   v-model="login.password"
                   :rules="passwordRules"
                   label="Password"
-                  :type="type"
+                  :append-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
+                  @click:append="showPass = !showPass"
+                  :type="showPass ? 'text' : 'password'"
                   required
                 ></v-text-field>
 
@@ -70,6 +72,7 @@ export default {
       return {
         loader: null,
         loading: false,
+        showPass: false,
         login: {
           username: '',
           password: '',
