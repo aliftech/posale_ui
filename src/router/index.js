@@ -8,6 +8,8 @@ import Category from '../views/Category.vue'
 import Product from '../views/Product.vue'
 import Inventory from '../views/Inventory.vue'
 import Suplyer from '../views/Suplyer.vue'
+import Icon from '../views/Icon.vue'
+import Menu from '../views/Menu.vue'
 
 Vue.use(VueRouter)
 
@@ -51,6 +53,16 @@ const routes = [
     path: '/suplyer_list',
     name: 'Suplyer',
     component: Suplyer
+  },
+  {
+    path: '/icon',
+    name: 'Icon',
+    component: Icon
+  },
+  {
+    path: '/menu',
+    name: 'Menu',
+    component: Menu
   },
 ]
 

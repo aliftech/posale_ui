@@ -8,6 +8,7 @@ import VueAxios from 'vue-axios'
 import api from './plugins/api';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import "material-design-iconic-font/dist/css/material-design-iconic-font.css"
 
 Vue.use(VueSweetalert2);
 
