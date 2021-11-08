@@ -2,7 +2,7 @@
   
     <v-app>
 
-        <inventory-list class="mt-12"></inventory-list>
+        <inventory-list class="margin"></inventory-list>
 
         <navbar></navbar>
 
@@ -24,6 +24,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .margin {
+        justify-content: center;
+        margin-top: 10%;
+    }
 </style>

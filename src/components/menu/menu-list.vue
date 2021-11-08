@@ -68,6 +68,7 @@
                                 <td> <i :class="row.item.icon" class="zmdi-hc-2x"></i> </td>
                                 <td> {{row.item.link}} </td>
                                 <td> {{row.item.parent}} </td>
+                                <td> {{row.item.number}} </td>
                                 <td> {{row.item.created_by}} </td>
                                 <td> {{row.item.created_at}} </td>
                                 <td>
@@ -134,7 +135,17 @@
                 :id="id"
                 v-on:closeEdit="closeEdit"
                 v-on:saveEdit="saveEdit"
+                :number="number"
             ></edit>
+
+
+            <delete
+                :id="id"
+                :deleteDialog="deleteDialog"
+                v-on:closeDel="closeDel"
+                v-on:saveDel="saveDel"
+                :number="number"
+            ></delete>
 
         </v-card>
 
@@ -146,12 +157,14 @@
 
 import Add from '../menu/add.vue'
 import Edit from '../menu/edit.vue'
+import Delete from '../menu/delete.vue'
 
 export default {
     name: 'menuList',
     components:{
         Add,
-        Edit
+        Edit,
+        Delete
     },
     data() {
         return {
@@ -166,6 +179,7 @@ export default {
                 { text: 'Icon', value: 'icon' },
                 { text: 'Link', value: 'link' },
                 { text: 'Parent', value: 'parent' },
+                { text: 'Number', value: 'number' },
                 { text: 'Created By', value: 'created_by' },
                 { text: 'Created At', value: 'created_at' },
                 { text: 'Action', value: 'actions', sortable: false }
@@ -184,7 +198,8 @@ export default {
             link: '',
             parent: '',
             editDialog: false,
-            deleteDialog: false
+            deleteDialog: false,
+            number: ''
         }
     },
     mounted() {
@@ -228,6 +243,7 @@ export default {
             this.icon = ''
             this.link = '',
             this.parent = ''
+            this.number = ''
         },
         closeDialog() {
             this.dialog = false
@@ -242,6 +258,7 @@ export default {
                     this.icon = dt.icon
                     this.link = dt.link
                     this.parent = dt.parent
+                    this.number = dt.number
                 })
         },
         closeEdit() {
@@ -265,6 +282,26 @@ export default {
                         this.msg = res.data.msg
                         this.editDialog = true
                     }
+                })
+        },
+        del(id) {
+            this.id = id
+            this.deleteDialog = true
+        },
+        closeDel() {
+            this.id = ''
+            this.deleteDialog = false
+        },
+        saveDel(paramsDelete) {
+            this.$axios.post('menu_delete', paramsDelete)
+                .then((res) => {
+                    this.msg = res.data.msg
+                    this.closeDel()
+                    this.$swal.fire({
+                        icon: 'success',
+                        title: this.msg
+                    })
+                    this.loadData()
                 })
         }
     },

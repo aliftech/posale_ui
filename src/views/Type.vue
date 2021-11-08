@@ -4,7 +4,7 @@
         app
     >
 
-        <v-container class="justify-center mt-12">
+        <v-container class="justify-center margin">
             <type-list></type-list>
         </v-container>
 
@@ -28,6 +28,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .margin {
+        justify-content: center;
+        margin-top: 10%;
+    }
 </style>

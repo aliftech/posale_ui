@@ -2,7 +2,7 @@
   
     <v-app>
 
-        <v-container class="justify-center mt-12">
+        <v-container class="justify-center margin">
             <brand-list></brand-list>
         </v-container>
 
@@ -26,6 +26,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .margin {
+        justify-content: center;
+        margin-top: 10%;
+    }
 </style>

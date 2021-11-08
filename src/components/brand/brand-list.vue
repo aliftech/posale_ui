@@ -208,7 +208,7 @@
 
 <script>
 
-import Add from './add.vue'
+import Add from './brand-add.vue'
 
 export default {
     name: 'brandList',

@@ -3,7 +3,7 @@
     <v-app>
 
         <v-container class="justify-center margin">
-            <icon-list></icon-list>
+            <role-list></role-list>
         </v-container>
 
         <navbar></navbar>
@@ -15,13 +15,13 @@
 <script>
 
 import Navbar from '../components/nav/navbar.vue'
-import iconList from '../components/icon/icon-list.vue'
+import roleList from '../components/role/role-list.vue'
 
 export default {
-    name: 'Icon',
+    name: 'Role',
     components: {
         Navbar,
-        iconList
+        roleList
     }
 }
 </script>

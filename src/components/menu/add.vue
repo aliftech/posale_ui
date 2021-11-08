@@ -54,6 +54,15 @@
                       </small>
                   </v-col>
                   <v-col cols="12">
+                      <v-text-field
+                          label="Number*"
+                          v-model="number"
+                      ></v-text-field>
+                      <small class="red--text">
+                          {{msg.number}}
+                      </small>
+                  </v-col>
+                  <v-col cols="12">
                       <v-autocomplete
                         label="Parent"
                         v-model="parent"
@@ -96,7 +105,8 @@ export default {
         'icon',
         'link',
         'parent',
-        'msg'
+        'msg',
+        'number'
     ],
     computed: {
         params() {
@@ -104,7 +114,8 @@ export default {
                 menu: this.menu,
                 icon: this.icon,
                 link: this.link,
-                parent: this.parent
+                parent: this.parent,
+                number: this.number
             }
         }
     },

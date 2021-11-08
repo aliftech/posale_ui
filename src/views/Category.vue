@@ -3,7 +3,7 @@
     <v-app>
 
 
-        <category-list class="justify-center mt-12"></category-list>
+        <category-list class="justify-center margin"></category-list>
 
         <navbar></navbar>
 
@@ -26,6 +26,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .margin {
+        justify-content: center;
+        margin-top: 10%;
+    }
 </style>

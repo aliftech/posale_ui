@@ -29,7 +29,6 @@
                         v-if="!item.subMenu"
                         :key="idx"
                         :to="item.to"
-                        class="item_menu"
                     >
                         <v-list-item-icon>
                             <v-icon>{{ item.icon }}</v-icon>
@@ -54,6 +53,7 @@
                             v-for="(itemSub, i) in item.subMenu"
                             :key="i"
                             :to="itemSub.to"
+                            class="item_menu"
                         >
                             <v-list-item-icon>
                                 <v-icon>{{ itemSub.icon }}</v-icon>
@@ -236,6 +236,16 @@ export default {
                             icon: 'zmdi zmdi-menu',
                             text: 'Menu'
                         },
+                        {
+                            to: '/role',
+                            icon: 'zmdi zmdi-lock',
+                            text: 'Role'
+                        },
+                        {
+                            to: '/role-menu',
+                            icon: 'zmdi zmdi-link',
+                            text: 'Role Menu'
+                        },
                     ]
                 }
             ]
@@ -244,6 +254,9 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    .item_menu {
+        padding-left: 15px;
+        margin-left: 15px;
+    }
 </style>
