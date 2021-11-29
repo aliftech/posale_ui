@@ -1,31 +1,29 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Router from 'vue-router'
 import Login from '../views/Login.vue'
-import HomeRoute from '../views/home-route.js'
+import dashboardRouter from '../router/dashboard/myRouter'
 
-Vue.use(VueRouter)
+Vue.use(Router)
 
-// const routes = [
-//   {
-//     path: '/',
-//     name: 'Login',
-//     component: Login
-//   },
-//   ...HomeRoute,
-// ]
-
-const router = new VueRouter({
+const router = new Router({
   routes: [
     {
         path: '/',
         name: 'Login',
         component: Login
     },
-    ...HomeRoute,
+    ...dashboardRouter
   ]
 })
 
-
-
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.allowAnonymous)) {
+    next()
+    //alert()
+  } else {
+    next()
+    //alert("Harus validasi")
+  }
+})
 
 export default router

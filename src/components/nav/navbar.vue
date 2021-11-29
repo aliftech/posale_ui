@@ -1,7 +1,6 @@
 <template>
 
-    <v-app>
-
+    <div>
 
         <v-navigation-drawer
                 app
@@ -63,7 +62,7 @@
                     
                     </v-list-group>
                 </template>
-            </v-navigation-drawer>
+        </v-navigation-drawer>
 
 
 
@@ -128,7 +127,7 @@
         
         </v-app-bar>
 
-    </v-app>
+    </div>
 
 </template>
 
@@ -249,6 +248,20 @@ export default {
                     ]
                 }
             ]
+        }
+    },
+    methods: {
+        profile () {
+            console.log('profile')
+        },
+        setting () {
+            console.log('setting')
+        },
+        logout () {
+            console.log('logout')
+        },
+        notifications () {
+            console.log('notifications')
         }
     }
 }

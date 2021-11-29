@@ -1,21 +1,37 @@
 <template>
-    <div class="centered-container hero" app>
+    
+  <div class="flex-container">
+    <div class="flex">
+      <v-card
+        elevation="10"
+        outlined
+      >
 
-        <v-card
-            elevation="24"
-            outlined
-            shaped
-            class="card-width"
+        <v-container
+          class="center mt-7 mb-7"
         >
 
-          <v-img
-              :aspect-ratio="16/9"
-              src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
-          ></v-img>
-        
-          <v-container fluid>
+          <div class="center-item">
+            <img src="../assets/logo.png" class="img-logo" alt="">
+          </div>
 
-            <v-form
+        </v-container>
+
+        <v-container class="center">
+          <div class="center-item">
+            <p>Don't have an account ? <a @click="register">Sign Up</a></p>
+          </div>
+        </v-container>
+
+        <v-container class="center">
+          <div class="center-item">
+            <p><a @click="forget">Forget Password</a></p>
+          </div>
+        </v-container>
+
+        <v-container class="center mb-5">
+
+          <v-form
                 ref="form"
                 v-model="valid"
                 lazy-validation
@@ -54,11 +70,12 @@
                 
             </v-form>
 
-          </v-container>
-        
-        </v-card>
+        </v-container>
 
+      </v-card>
     </div>
+  </div>
+
 </template>
 
 <script>
@@ -101,30 +118,56 @@ export default {
                     this.$router.push('/dashboard')
                 )
             
+        },
+        register () {
+          this.$router.push('/register')
+        },
+        forget () {
+          this.$router.push('/forget')
         }
     }
 }
 </script>
 
 <style scoped>
-    .hero {
-        background-image: url('../assets/pos-banner.jpg');
-        background-size: cover;
-    }
+  .img-logo {
+    width: 80px;
+    height: 80px;
+    margin: auto auto;
+  }
 
-    .centered-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        height: 100vh;
+  @media screen and (max-width: 750px) {
+    .img-logo {
+      width: 50px;
+      height: 50px;
     }
-    .form-width{
-        width: 80%;
-        justify-content: center;
-        margin: auto auto;
-    }
-    .card-width {
-        width: 45%;
-    }
+  }
+
+  .flex-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .flex-container div.flex {
+    flex: 0 1 500px;
+  }
+
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+
+  .center div.center-item {
+    flex: auto 50%;
+  }
+
+  .form-width {
+    width: 75%;
+  }
 </style>
