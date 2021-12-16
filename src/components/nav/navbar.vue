@@ -6,8 +6,7 @@
                 app
                 relative
                 v-model="drawer"
-                color="blue"
-                dark
+                color="white"
                 height="100%"
             >
                 <v-list>
@@ -68,6 +67,8 @@
 
         <v-app-bar
             app
+            color="black"
+            dark
         >
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -75,9 +76,12 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn icon @click="notifications" color="black">
-                    <v-icon>mdi-bell</v-icon>
-                </v-btn>
+            <v-btn 
+                icon 
+                @click="notifications"
+            >
+                <v-icon>mdi-bell</v-icon>
+            </v-btn>
 
 
 
