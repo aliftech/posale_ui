@@ -44,7 +44,11 @@
 
                     <template v-slot:item="row">
                         <tr>
+                            <td> {{row.item.parent}} </td>
+                            <td> {{row.item.subMenu}} </td>
                             <td> <i :class="row.item.icon"></i> </td>
+                            <td> {{row.item.link}} </td>
+                            <td> {{row.item.number}} </td>
                             <td> {{row.item.created_by}} </td>
                             <td> {{row.item.created_at}} </td>
                             <td>
@@ -66,7 +70,7 @@
 
                                     <v-list>
                                         <v-list-item
-                                            @click="editIcon(row.item.id)"
+                                            @click="editSubmenu(row.item.id)"
                                         >
                                             <v-list-item-icon>
                                                 <v-icon>mdi-pencil</v-icon>
@@ -77,7 +81,7 @@
                                         </v-list-item>
 
                                         <v-list-item
-                                            @click="deleteIcon(row.item.id)"
+                                            @click="deleteSubmenu(row.item.id)"
                                         >
                                             <v-list-item-icon>
                                                 <v-icon>mdi-delete</v-icon>
@@ -99,13 +103,6 @@
             </v-container>
         </v-card>
 
-        <icon-delete
-            :id="id"
-            :dialog="dialog"
-            v-on:close="close"
-            v-on:deleted="deleted"
-        ></icon-delete>
-
         <Footer class="mt-5"></Footer>
 
     </div>
@@ -116,20 +113,22 @@
 
 import Titlebar from '../toolbar/titlebar.vue'
 import Footer from '../footer/footer.vue'
-import iconDelete from '../icon/icon-delete.vue'
 
 export default {
-    name: 'iconList',
+    name: 'submenuList',
     components: {
         Titlebar,
         Footer,
-        iconDelete
     },
     data () {
         return {
             search: '',
             headers: [
-                { text: 'Icon', value: 'icon', sortable: false },
+                { text: 'Parent', value: 'type', sortable: false },
+                { text: 'Submenu', value: 'type', sortable: false },
+                { text: 'Icon', value: 'type', sortable: false },
+                { text: 'Link', value: 'type', sortable: false },
+                { text: 'Number', value: 'type', sortable: false },
                 { text: 'Created By', value: 'created_by', sortable: false },
                 { text: 'Created At', value: 'created_at', sortable: false },
                 { text: 'Action', value: 'actions', sortable: false }
@@ -140,60 +139,29 @@ export default {
             loading: false,
             loadingText: '',
             items: [],
-            title: 'Icon List',
+            title: 'Submenu List',
             id: '',
             dialog: false,
             msg: '',
-            link: 'icon/add'
+            link: 'submenu/add'
         }
     },
-
     mounted () {
         this.loading = true
         this.loadingText = 'Loading...'
         this.loadData()
     },
-
     methods: {
         loadData () {
             setTimeout(() => {
                 this.loading = false
                 this.loadingText = ''
-                this.$axios.get('icon')
+                this.$axios.get('submenu')
                 .then((res) => {
                     this.items = res.data.data
                 })
             }, 2000)
         },
-
-        editIcon (id) {
-            this.$router.push('/icon/edit/'+id)
-        },
-
-        deleteIcon (id) {
-            this.id = id
-            this.dialog = true
-        },
-
-        close (dialog) {
-            this.dialog = dialog
-        },
-
-        deleted (paramId) {
-            this.$axios.post('icon_delete', paramId)
-                .then((res) => {
-                    this.msg = res.data.msg
-                    this.$swal.fire({
-                        icon: 'success',
-                        title: this.msg
-                    })
-                    setTimeout(() => {
-                        this.id = ''
-                        this.dialog = ''
-                    }, 1000)
-                    this.loadData()
-                })
-        }
     }
 }
 </script>

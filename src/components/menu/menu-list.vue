@@ -44,7 +44,9 @@
 
                     <template v-slot:item="row">
                         <tr>
+                            <td> {{row.item.menu}} </td>
                             <td> <i :class="row.item.icon"></i> </td>
+                            <td> {{row.item.link}} </td>
                             <td> {{row.item.created_by}} </td>
                             <td> {{row.item.created_at}} </td>
                             <td>
@@ -66,7 +68,7 @@
 
                                     <v-list>
                                         <v-list-item
-                                            @click="editIcon(row.item.id)"
+                                            @click="editMenu(row.item.id)"
                                         >
                                             <v-list-item-icon>
                                                 <v-icon>mdi-pencil</v-icon>
@@ -77,7 +79,7 @@
                                         </v-list-item>
 
                                         <v-list-item
-                                            @click="deleteIcon(row.item.id)"
+                                            @click="deleteMenu(row.item.id)"
                                         >
                                             <v-list-item-icon>
                                                 <v-icon>mdi-delete</v-icon>
@@ -99,12 +101,12 @@
             </v-container>
         </v-card>
 
-        <icon-delete
+        <menu-delete
             :id="id"
             :dialog="dialog"
             v-on:close="close"
             v-on:deleted="deleted"
-        ></icon-delete>
+        ></menu-delete>
 
         <Footer class="mt-5"></Footer>
 
@@ -116,20 +118,22 @@
 
 import Titlebar from '../toolbar/titlebar.vue'
 import Footer from '../footer/footer.vue'
-import iconDelete from '../icon/icon-delete.vue'
+import menuDelete from '../menu/menu-delete.vue'
 
 export default {
-    name: 'iconList',
+    name: 'menuList',
     components: {
         Titlebar,
         Footer,
-        iconDelete
+        menuDelete
     },
     data () {
         return {
             search: '',
             headers: [
-                { text: 'Icon', value: 'icon', sortable: false },
+                { text: 'Menu', value: 'type', sortable: false },
+                { text: 'Icon', value: 'type', sortable: false },
+                { text: 'Link', value: 'type', sortable: false },
                 { text: 'Created By', value: 'created_by', sortable: false },
                 { text: 'Created At', value: 'created_at', sortable: false },
                 { text: 'Action', value: 'actions', sortable: false }
@@ -140,37 +144,35 @@ export default {
             loading: false,
             loadingText: '',
             items: [],
-            title: 'Icon List',
+            title: 'Menu List',
             id: '',
             dialog: false,
             msg: '',
-            link: 'icon/add'
+            link: 'menu/add'
         }
     },
-
     mounted () {
         this.loading = true
         this.loadingText = 'Loading...'
         this.loadData()
     },
-
     methods: {
         loadData () {
             setTimeout(() => {
                 this.loading = false
                 this.loadingText = ''
-                this.$axios.get('icon')
+                this.$axios.get('menu')
                 .then((res) => {
                     this.items = res.data.data
                 })
             }, 2000)
         },
 
-        editIcon (id) {
-            this.$router.push('/icon/edit/'+id)
+        editMenu (id) {
+            this.$router.push('/menu/edit/'+id)
         },
 
-        deleteIcon (id) {
+        deleteMenu (id) {
             this.id = id
             this.dialog = true
         },
@@ -180,7 +182,7 @@ export default {
         },
 
         deleted (paramId) {
-            this.$axios.post('icon_delete', paramId)
+            this.$axios.post('menu_delete', paramId)
                 .then((res) => {
                     this.msg = res.data.msg
                     this.$swal.fire({

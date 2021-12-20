@@ -72,7 +72,7 @@
         >
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-            <v-toolbar-title>CORECT-ERP</v-toolbar-title>
+            <v-toolbar-title>VOCALS</v-toolbar-title>
 
             <v-spacer></v-spacer>
 
@@ -238,6 +238,11 @@ export default {
                             to: '/menu',
                             icon: 'zmdi zmdi-menu',
                             text: 'Menu'
+                        },
+                        {
+                            to: '/submenu',
+                            icon: 'zmdi zmdi-menu',
+                            text: 'Sub-Menu'
                         },
                         {
                             to: '/role',

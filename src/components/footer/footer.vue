@@ -6,7 +6,7 @@
 
         <div class="flex">
 
-            <p>&copy; <b>CorrectErp</b> 2021 - 2022</p>
+            <p>&copy; <b>Vocals</b> 2021 - 2022</p>
 
         </div>
 

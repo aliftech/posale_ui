@@ -4,6 +4,8 @@ import CategoryRouter from '../../components/category/index'
 import ProductRouter from '../../components/product/index'
 import InventoryRouter from '../../components/inventory/index'
 import IconRouter from '../../components/icon/index'
+import MenuRouter from '../../components/menu/index'
+import SubmenuRouter from '../../components/submenu/index'
 
 export default [
   {
@@ -70,6 +72,24 @@ export default [
     component: () => import('@/views/icon.vue'),
     children: [
       ...IconRouter
+    ]
+  },
+
+  {
+    path: '/menu',
+    name: 'Menu',
+    component: () => import('@/views/menu.vue'),
+    children: [
+      ...MenuRouter
+    ]
+  },
+
+  {
+    path: '/submenu',
+    name: 'Submenu',
+    component: () => import('@/views/submenu'),
+    children: [
+      ...SubmenuRouter
     ]
   }
 ]
